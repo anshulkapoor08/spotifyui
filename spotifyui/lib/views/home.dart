@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotifyui/widget/album_cards.dart';
+import 'package:spotifyui/widget/rowalbum_cards.dart';
+import 'package:spotifyui/widget/song_cards.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -22,30 +24,36 @@ class _HomeViewState extends State<HomeView> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.white38, Colors.black.withOpacity(0)]),
+                colors: [
+                  Color.fromARGB(97, 16, 141, 93),
+                  Colors.black.withOpacity(0)
+                ]),
           ),
         ),
-        SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+        const SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: SafeArea(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 40,
+                  SizedBox(
+                    height: 25,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: EdgeInsets.symmetric(horizontal: 18.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Recently Played',
-                            style: Theme.of(context).textTheme.headlineLarge),
-                        const SizedBox(
+                        Text(
+                          'Recently Played',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 23),
+                        ),
+                        SizedBox(
                           width: 20,
                         ),
-                        const Row(
+                        Row(
                           children: [
                             Icon(Icons.history),
                             SizedBox(
@@ -57,8 +65,8 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
-                  const SingleChildScrollView(
-                    padding: EdgeInsets.all(16.0),
+                  SingleChildScrollView(
+                    padding: EdgeInsets.fromLTRB(18, 16, 0, 0),
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     child: Row(
@@ -98,9 +106,255 @@ class _HomeViewState extends State<HomeView> {
                         SizedBox(
                           width: 16,
                         ),
+                        Albumcard(
+                          image: AssetImage('assets/image7.jpg'),
+                          label: 'pop mix',
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Albumcard(
+                          image: AssetImage('assets/image8.jpg'),
+                          label: 'pop mix',
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
                       ],
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Good Evening',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 23),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Row(
+                          children: [
+                            // ignore: avoid_unnecessary_containers
+                            RowAlbumCards(
+                              images: AssetImage("assets/top50.jpg"),
+                              label: "Top 50 - global",
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RowAlbumCards(
+                              images: AssetImage("assets/image7.jpg"),
+                              label: "Top 50 - USA",
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: [
+                            // ignore: avoid_unnecessary_containers
+                            RowAlbumCards(
+                              images: AssetImage("assets/image8.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RowAlbumCards(
+                              images: AssetImage("assets/image9.jpg"),
+                              label: "Carnival",
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: [
+                            // ignore: avoid_unnecessary_containers
+                            RowAlbumCards(
+                              images: AssetImage("assets/image10.jpg"),
+                              label: "Saregama ",
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RowAlbumCards(
+                              images: AssetImage("assets/image11.jpg"),
+                              label: "bhajans",
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: [
+                            // ignore: avoid_unnecessary_containers
+                            RowAlbumCards(
+                              images: AssetImage("assets/image14.jpg"),
+                              label: "Butter mix",
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            RowAlbumCards(
+                              images: AssetImage("assets/image12.jpg"),
+                              label: "New dance",
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 18.0),
+                        child: Text(
+                          "Based on your recent listening",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 23),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SingleChildScrollView(
+                        padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                        scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(),
+                        child: Row(
+                          children: [
+                            SongCards(
+                              image: AssetImage("assets/image18.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/images19.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image20.jpeg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image21.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image22.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image23.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          "Recommeded Radio",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 23),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SingleChildScrollView(
+                        padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                        scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(),
+                        child: Row(
+                          children: [
+                            SongCards(
+                              image: AssetImage("assets/image24.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image25.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image26.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image27.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image28.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            SongCards(
+                              image: AssetImage("assets/image29.jpg"),
+                              label: "Eminerm",
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             )),
@@ -108,5 +362,3 @@ class _HomeViewState extends State<HomeView> {
     ));
   }
 }
-
-
